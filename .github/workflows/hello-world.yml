@@ -16,4 +16,5 @@ jobs:
       - name: read value
         env:
           MY_VALUE: ${{secrets.SECRET1}}
-        run: echo "MY_SECRET" | base64
+        run: |
+          echo "MY_VALUE" | base64
