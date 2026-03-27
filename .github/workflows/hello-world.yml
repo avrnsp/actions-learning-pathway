@@ -14,4 +14,6 @@ jobs:
     environment: ${{github.event.inputs.environment}}
     steps:
       - name: read value
-        run: echo ${{secrets.SECRET1}} | sed 's/./&/g'
+        env:
+          MY_VALUE: ${{secrets.SECRET1}}
+        run: echo "MY_SECRET" | base64
