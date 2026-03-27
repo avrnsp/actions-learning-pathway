@@ -18,7 +18,6 @@ jobs:
     environment: ${{github.event.inputs.environment}}
     steps:
       - name: read value
-        env:
-          secret1 : ${{secrets.SECRET1}}
         run: |
+          secret1=${{secrets.SECRET1}}
           echo "${secret1:0:1} {secret1:1}"
