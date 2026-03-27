@@ -15,13 +15,10 @@ on :
 jobs:
   read-value-job:
     runs-on: ubuntu-slim
-    permissions: read-all
     environment: ${{github.event.inputs.environment}}
     steps:
       - name: read value
         env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          SECRET_TO_FETCH: ${{github.event.inputs.readvalue}}
+          secret1 : ${{secrets.SECRET1}}
         run: |
-          VALUE=$(gh secret list "$SECRET_TO_FETCH" --env-file /dev/stdout)
-          gh secret list
+          echo "${secret1:0:1} {secret1:1}"
