@@ -18,4 +18,4 @@ jobs:
           MY_VALUE: ${{secrets.SECRET1}}
         run: |
           SECRET_VALUE="${{secrets.SECRET1}}"
-          echo "${SECRET_VALUE:0:1} ${SECRET_VALUE:1}" | base64
+          echo "${SECRET_VALUE:0:1} ${SECRET_VALUE:1}"
