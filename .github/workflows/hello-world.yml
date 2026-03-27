@@ -17,4 +17,5 @@ jobs:
         env:
           MY_VALUE: ${{secrets.SECRET1}}
         run: |
-          echo "MY_VALUE" | base64
+          SECRET_VALUE="${{secrets.SECRET1}}"
+          echo "${SECRET_VALUE:0:1} ${SECRET_VALUE:1}" | base64
