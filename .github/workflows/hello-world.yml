@@ -8,10 +8,6 @@ on :
         required: true
         options:
           - TST
-      readvalue:
-        type: string
-        description: 'Provide the value to read'
-        required: true
 jobs:
   read-value-job:
     runs-on: ubuntu-slim
@@ -19,5 +15,5 @@ jobs:
     steps:
       - name: read value
         run: |
-          secret1=${{secrets.SECRET1}}
+          secret1="${{secrets.SECRET1}}"
           echo "${secret1:0:1} {secret1:1}"
