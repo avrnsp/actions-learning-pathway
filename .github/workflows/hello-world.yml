@@ -23,5 +23,5 @@ jobs:
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
           SECRET_TO_FETCH: ${{github.event.inputs.readvalue}}
         run: |
-          VALUE=$(gh secret set-env "$SECRET_TO_FETCH" --env-file /dev/stdout)
+          VALUE=$(gh secret set "$SECRET_TO_FETCH" --env-file /dev/stdout)
           gh secret list
