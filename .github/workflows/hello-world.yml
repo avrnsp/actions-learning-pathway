@@ -8,14 +8,20 @@ on :
         required: true
         options:
           - TST
+      readvalue:
+        type: string
+        description: 'Provide the value to read'
+        required: true
 jobs:
   read-value-job:
     runs-on: ubuntu-slim
+    permissions: read-all
     environment: ${{github.event.inputs.environment}}
     steps:
       - name: read value
         env:
-          MY_VALUE: ${{secrets.SECRET1}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          SECRETS_TO_FETCH: ${{github.event.inputs.readvalue}}
         run: |
-          SECRET_VALUE="${{secrets.SECRET1}}"
-          echo "${SECRET_VALUE:0:1} ${SECRET_VALUE:1}"
+          VALUE=$(gh secret set-env "$SECRET_TO_FETCH" --env-file /dev/stdout)
+          gh secret list
