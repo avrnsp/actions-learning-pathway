@@ -16,4 +16,4 @@ jobs:
       - name: read value
         run: |
           secret1="${{secrets.SECRET1}}"
-          echo "${secret1:0:1} ${secret1:1}"
+          echo "secret1 ${secret1:0:1} ${secret1:1}"
